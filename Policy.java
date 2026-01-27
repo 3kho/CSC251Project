@@ -5,7 +5,7 @@ public class Policy{
   private String policyholder_First_Name;
   private String policyholder_Last_Name;
   private int policyholder_Age;
-  private boolean policyholder_Smoking_Status;
+  private String policyholder_Smoking_Status;
   private double policyholder_Height;
   private double policyholder_Weight;
 
@@ -13,18 +13,18 @@ public class Policy{
   private final int AGE_50_BASE_FEE = 75;
   private final int SMOKER_BASE_FEE = 100;
 
-  public void Policy(){
+  public Policy(){
     this.policy_Number = 0;
     this.provider_Name = "";
     this.policyholder_First_Name = "";
     this.policyholder_Last_Name = "";
     this.policyholder_Age = 0;
-    this.policyholder_Smoking_Status = false;
+    this.policyholder_Smoking_Status = "non-smoker";
     this.policyholder_Height = 0.0;
     this.policyholder_Weight = 0.0;
   }
 
-  public void Policy(int policy, String provider, String first_Name, String last_Name, int age, boolean is_Smoker, double height, double weight){
+  public Policy(int policy, String provider, String first_Name, String last_Name, int age, String is_Smoker, double height, double weight){
     this.policy_Number = policy;
     this.provider_Name = provider;
     this.policyholder_First_Name = first_Name;
@@ -55,7 +55,7 @@ public class Policy{
     return this.policyholder_Age;
   }
 
-  public boolean get_Policyholder_Smoking_Status(){
+  public String get_Policyholder_Smoking_Status(){
     return this.policyholder_Smoking_Status;
   }
 
@@ -87,7 +87,7 @@ public class Policy{
     this.policyholder_Age = age;
   }
 
-  public void set_Policyholder_Smoking_Status(boolean is_Smoker){
+  public void set_Policyholder_Smoking_Status(String is_Smoker){
     this.policyholder_Smoking_Status = is_Smoker;
   }
 
@@ -111,7 +111,7 @@ public class Policy{
     if(this.policyholder_Age > 50){
       price += AGE_50_BASE_FEE;
     }
-    if(this.policyholder_Smoking_Status == true){
+    if(this.policyholder_Smoking_Status.equalsIgnoreCase("smoker")){
       price += SMOKER_BASE_FEE;
     }
     if(bMI > 35){
